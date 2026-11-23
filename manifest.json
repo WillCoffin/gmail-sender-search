@@ -1,9 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Gmail Sender Search",
-  "version": "1.0",
-  "description": "One-click search for Gmail senders by clicking on their email address",
-  "permissions": ["activeTab"],
+  "version": "1.1.0",
+  "description": "Search your Gmail inbox or start a filter from a sender in your message list",
   "content_scripts": [
     {
       "matches": ["https://mail.google.com/*"],

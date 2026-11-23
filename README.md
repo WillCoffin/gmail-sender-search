@@ -1,10 +1,11 @@
 # Gmail Sender Search Chrome Extension
 
-A Chrome extension that adds a one-click search button next to sender email addresses in Gmail, allowing you to quickly search for all emails from that sender in your inbox.
+A Chrome extension that adds search and filter shortcuts next to senders in the Gmail message list.
 
 ## Features
 
-- 🔍 One-click search for emails from any sender
+- One-click inbox search in the current Gmail account
+- Open Gmail's filter criteria with the sender already filled in
 - Automatically detects sender email addresses in Gmail
 - Searches with the query: `from:email@example.com in:inbox`
 - Works with Gmail's dynamic content loading
@@ -28,18 +29,19 @@ _This extension will be published to the Chrome Web Store soon._
 ## Usage
 
 1. Open Gmail in your browser
-2. Look for the 🔍 search button that appears next to sender email addresses
-3. Click the search button to instantly search for all emails from that sender in your inbox
-4. The search will use Gmail's built-in search with the query: `from:sender@email.com in:inbox`
+2. Click the magnifying glass next to a sender to search your inbox with `from:sender@email.com in:inbox`.
+3. Click the funnel (**Create Filter for Sender**) to open Gmail's search options with **From** filled in. Review the criteria, then use Gmail's **Create filter** buttons to choose actions and save the filter.
+
+For a conversation that lists multiple senders, the shortcuts use the first sender address in the row.
 
 ## How It Works
 
 The extension:
 
 - Injects a content script into Gmail pages
-- Detects sender email addresses in various Gmail UI elements
-- Adds a small search button next to each detected email address
-- When clicked, the button triggers a Gmail search with the appropriate `from:` query
+- Validates sender addresses from the message list
+- Reuses the same controls when Gmail updates a conversation row
+- Opens Gmail's native search and filter controls in the current account
 
 ## Files
 
@@ -56,6 +58,13 @@ To modify or extend this extension:
 2. Go to `chrome://extensions/`
 3. Click the refresh button on the extension card
 4. Test your changes in Gmail
+
+Run the regression tests with Node.js 22.13 or later. The test dependencies are only needed for development.
+
+```sh
+npm ci
+npm test
+```
 
 ## Browser Compatibility
 
